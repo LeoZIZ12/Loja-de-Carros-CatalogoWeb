@@ -1,0 +1,405 @@
+/* ============================================================
+   style.css  —  Estilo base genérico (Bootstrap 5 + customização)
+   Personalize as variáveis CSS no :root para mudar todo o tema
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. VARIÁVEIS – mude aqui para personalizar o site todo
+   ---------------------------------------------------------- */
+:root {
+  /* Cores principais */
+  --color-primary:     #2563eb;   /* azul padrão */
+  --color-primary-dark:#1d4ed8;
+  --color-accent:      #f59e0b;   /* destaque / hover */
+  --color-bg:          #f8f9fa;   /* fundo geral */
+  --color-surface:     #ffffff;   /* superfície dos cards */
+  --color-text:        #1e293b;   /* texto principal */
+  --color-text-muted:  #64748b;   /* texto secundário */
+  --color-border:      #e2e8f0;   /* bordas */
+
+  /* Footer */
+  --color-footer-bg:   #1e293b;
+  --color-footer-text: #cbd5e1;
+
+  /* Placeholder de imagem */
+  --color-placeholder-bg:  #dde1e7;
+  --color-placeholder-icon: #94a3b8;
+
+  /* Tipografia */
+  --font-base:  'Segoe UI', system-ui, sans-serif;
+  --font-size-base: 1rem;
+
+  /* Espaçamentos e bordas */
+  --radius-card: 0.75rem;
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.07);
+  --shadow-card-hover: 0 6px 24px rgba(0,0,0,0.13);
+
+  /* Carousel featured */
+  --color-carousel-bg: #dbeafe;
+}
+
+/* ----------------------------------------------------------
+   2. BASE
+   ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ----------------------------------------------------------
+   3. HEADER / NAVBAR
+   ---------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header .navbar { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+
+/* Logotipo */
+.logo-placeholder {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border: 2px solid var(--color-primary);
+  color: var(--color-text) !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0.35rem;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s;
+}
+.logo-placeholder:hover {
+  background-color: var(--color-primary);
+  color: #fff !important;
+}
+
+/* Nav links */
+.site-header .nav-link {
+  color: var(--color-text);
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.35rem;
+  transition: background 0.2s, color 0.2s;
+}
+.site-header .nav-link:hover,
+.site-header .nav-link.active {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* ----------------------------------------------------------
+   4. TÍTULOS DE SEÇÃO
+   ---------------------------------------------------------- */
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.badge-entity {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.section-divider {
+  border-color: var(--color-border);
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ----------------------------------------------------------
+   5. CAROUSEL – ITENS EM DESTAQUE
+   ---------------------------------------------------------- */
+#carouselHero .carousel-item {
+  padding: 1rem 0;
+}
+
+#carouselHero .carousel-control-prev,
+#carouselHero .carousel-control-next {
+  filter: invert(1);
+  width: 40px;
+}
+
+#carouselHero .carousel-indicators [data-bs-target] {
+  background-color: #aaa;  /* inativo */
+}
+
+#carouselHero .carousel-indicators .active {
+  background-color: black;  /* ativo */
+}
+
+/* sem filter = ícone preto */
+#carouselHero .carousel-control-prev-icon,
+#carouselHero .carousel-control-next-icon {
+  filter: none;
+}
+
+/* ----------------------------------------------------------
+   6. CARDS – TODOS OS ITENS
+   ---------------------------------------------------------- */
+.item-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  color: var(--color-text);
+  transition: box-shadow 0.25s, transform 0.25s;
+  text-decoration: none !important;
+}
+
+.item-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  color: var(--color-text);
+}
+
+/* Placeholder de imagem no card */
+.card-img-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: var(--color-placeholder-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-placeholder-icon);
+  font-size: 2rem;
+}
+
+.item-card .card-body { padding: 0.75rem; }
+
+.item-card .card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.item-card .card-text {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   7. FOOTER
+   ---------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  margin-top: 2rem;
+}
+
+.site-footer .section-title { color: #fff; }
+
+.footer-divider { border-color: rgba(255,255,255,0.15); }
+
+.footer-label {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-text {
+  color: var(--color-footer-text);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+/* Autoria */
+.author-avatar { font-size: 2.5rem; color: var(--color-footer-text); line-height: 1; }
+
+.author-info p { color: var(--color-footer-text); font-size: 0.9rem; }
+
+.social-links { display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem; }
+.social-links strong { color: var(--color-footer-text); font-size: 0.9rem; }
+
+.social-icon {
+  color: var(--color-footer-text);
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+.social-icon:hover { color: var(--color-accent); }
+
+/* ----------------------------------------------------------
+   8. PÁGINA DE DETALHE – Informações Gerais
+   ---------------------------------------------------------- */
+.detail-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+}
+
+/* Imagem do detalhe */
+.detail-img-placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--color-placeholder-bg);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-placeholder-icon);
+  font-size: 3rem;
+}
+
+.detail-item-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+/* Lista de atributos */
+.detail-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-info-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.93rem;
+}
+
+.info-label {
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.info-value { color: var(--color-text-muted); }
+
+.detail-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+/* ----------------------------------------------------------
+   9. FOTOS RELACIONADAS (entidade secundária)
+   ---------------------------------------------------------- */
+.related-photos-wrapper {
+  padding-right: 2.5rem; /* espaço para a seta */
+}
+
+.related-photos-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Esconde scrollbar mas mantém funcional */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.related-photos-scroll::-webkit-scrollbar { height: 5px; }
+.related-photos-scroll::-webkit-scrollbar-track { background: transparent; }
+.related-photos-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+
+.related-photo-card {
+  flex: 0 0 180px;
+  scroll-snap-align: start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s;
+}
+
+.related-photo-card:hover { box-shadow: var(--shadow-card-hover); }
+
+.related-photo-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: var(--color-placeholder-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-placeholder-icon);
+  font-size: 1.8rem;
+}
+
+.related-photo-caption {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0.5rem 0.75rem 0.1rem;
+}
+
+.related-photo-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0 0.75rem 0.75rem;
+}
+
+/* Seta de navegação */
+.related-photos-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--color-text);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: background 0.2s, color 0.2s;
+}
+
+.related-photos-arrow:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* ----------------------------------------------------------
+   10. UTILITÁRIOS
+   ---------------------------------------------------------- */
+.section-featured,
+.section-all-items,
+.section-detail-info,
+.section-related-photos { background-color: var(--color-bg); }
+
+/* Zebra leve entre seções */
+.section-all-items,
+.section-related-photos { background-color: var(--color-surface); }
+
+
+
